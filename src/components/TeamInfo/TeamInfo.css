@@ -5,3 +5,7 @@
 .info-value-item {
   max-width: 260px;
 }
+
+.info-value-item p {
+  text-transform: capitalize;
+}

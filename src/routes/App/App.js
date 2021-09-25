@@ -8,14 +8,14 @@ import { Search } from '../Search/Search';
 import { Error404 } from '../Error404/Error404';
 import { useUserState } from '../../hooks/useUserState';
 import { PrivateRoute } from '../../components/PrivateRoute/PrivateRoute';
-import { SessionProvider } from '../../context/SessionContext';
+import { TeamProvider } from '../../context/TeamContext';
 
 const App = () => {  
   const { session } = useUserState();
   console.log(session);
 
-  return ( 
-    <SessionProvider>
+  return (
+    <TeamProvider>
       <Router>
         <Layout>
             <Switch>
@@ -28,7 +28,7 @@ const App = () => {
             </Switch>  
         </Layout>      
       </Router>
-    </SessionProvider>
+    </TeamProvider>
   )
 }
 
