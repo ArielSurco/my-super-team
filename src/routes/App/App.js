@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { Layout } from '../../components/Layout/Layout';
 import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
+import { Search } from '../Search/Search';
 import { Error404 } from '../Error404/Error404';
 import { useUserState } from '../../hooks/useUserState';
 import { PrivateRoute } from '../../components/PrivateRoute/PrivateRoute';
@@ -22,6 +23,7 @@ const App = () => {
                 <Route exact path="/login">
                   <Login/>
                 </Route>
+                <PrivateRoute exact path="/search" component={Search}/>
                 <Route component={Error404} />
             </Switch>  
         </Layout>      

@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="container-fluid home">
             <TeamInfo />
-            <div className={`hero-list row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-${isXSViewport ? "center" : "start"}`}>
+            <div className={`row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-${isXSViewport ? "center" : "start"}`}>
                 <HeroCard/>
                 <HeroCard/>
                 <HeroCard/>
