@@ -1,20 +1,33 @@
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Layout } from '../components/Layout/Layout';
-import { Home } from '../routes/Home/Home';
-import { Error404 } from './Error404/Error404';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { Layout } from '../../components/Layout/Layout';
+import { Home } from '../Home/Home';
+import { Login } from '../Login/Login';
+import { Error404 } from '../Error404/Error404';
+import { useUserState } from '../../hooks/useUserState';
+import { PrivateRoute } from '../../components/PrivateRoute/PrivateRoute';
+import { SessionProvider } from '../../context/SessionContext';
 
-const App = () => {
+const App = () => {  
+  const { session } = useUserState();
+  console.log(session);
+
   return ( 
-    <Router>
-      <Layout>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={Error404} />
-        </Switch>  
-      </Layout>      
-    </Router>
-   );
+    <SessionProvider>
+      <Router>
+        <Layout>
+            <Switch>
+                <PrivateRoute exact path="/" component={Home}/>
+                <Route exact path="/login">
+                  <Login/>
+                </Route>
+                <Route component={Error404} />
+            </Switch>  
+        </Layout>      
+      </Router>
+    </SessionProvider>
+  )
 }
 
 export default App;

@@ -1,0 +1,8 @@
+.hero-card {
+  max-width: 350px;
+}
+
+.hero-container__hero-card {
+  width: 90%;
+  margin: 0 auto;
+}
