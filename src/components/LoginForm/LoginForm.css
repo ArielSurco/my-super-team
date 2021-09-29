@@ -1,5 +1,10 @@
+.login-form-container {
+  min-height: 75vh;
+}
+
 .login-form {
-  width: 30%;
+  width: 75%;
+  max-width: 500px;
 }
 
 .invalid-feedback,

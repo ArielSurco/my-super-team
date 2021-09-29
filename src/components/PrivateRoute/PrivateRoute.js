@@ -1,12 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { SessionContext } from '../../context/SessionContext';
+import { useUserState } from '../../hooks/useUserState';
 
 const PrivateRoute = ( props ) => {
-    // const { session } = React.useContext(SessionContext);
-    const isAuthenticated = true;
+    const { session } = useUserState();
 
-    return isAuthenticated ? <Route {...props}/> : <Redirect to="/login"/>
+    return session.isAuth ? <Route {...props}/> : <Redirect to="/login"/>
 }
 
 export { PrivateRoute };

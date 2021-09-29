@@ -32,8 +32,8 @@ const LoginForm = () => {
     });
 
     return (
-        <div className="container vh-100 d-flex justify-content-center align-items-center">
-            <form action="" onSubmit={formik.handleSubmit} className="login-form w-75 shadow-lg p-3 mb-5 bg-light rounded">
+        <div className="login-form-container container d-flex justify-content-center align-items-center">
+            <form action="" onSubmit={formik.handleSubmit} className="login-form shadow-lg p-3 mb-5 bg-light rounded">
                 <div className="form-row fs-1">
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email</label>
@@ -65,7 +65,7 @@ const LoginForm = () => {
                             {formik.errors.password}
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary fs-1 mt-3 rounded">Submit</button>
+                    <button type="submit" className="w-100 mt-3 btn btn-primary fs-1 rounded">Login</button>
                 </div>
             </form>
         </div>

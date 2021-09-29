@@ -1,9 +1,13 @@
 import React from 'react';
 import { HeroSearch } from '../../components/HeroSearch/HeroSearch';
-import { HeroCard } from '../../components/HeroCard/HeroCard';
+import { useSearchHero } from '../../hooks/useSearchHero';
+// import { HeroCard } from '../../components/HeroCard/HeroCard';
+
 import './Search.css';
 
 const Search = () => {
+    const [heroes, searchHero] = useSearchHero('')
+    
     const isXSViewport = window.innerWidth < 576
 
     return (

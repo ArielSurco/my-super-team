@@ -1,0 +1,22 @@
+.navbar-brand.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.login-btn {
+  margin-left: auto;
+  margin-right: 15px;
+  font-size: 1.6rem;
+}
+
+.navMenu {
+  justify-content: flex-end;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 768px) {
+  .login-btn {
+    margin-top: 10px;
+  }
+}

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Header } from '../Header/Header';
+import { Navbar } from '../Navbar/Navbar';
 import { Footer } from '../Footer/Footer';
 import './Layout.css';
 
 const Layout = ( props ) => {
     return (
     <React.Fragment>
-        <Header />
+        <Navbar />
         {props.children}
         <Footer />
     </React.Fragment>

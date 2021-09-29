@@ -1,27 +1,31 @@
-import React from 'react';
 import axios from 'axios';
 import { useLocalStorage } from './useLocalStorage';
 
 const useUserState = () => {
-    const [session, saveSession] = useLocalStorage('session', {
-        token: '',
-        isAuthenticated: false
-    });
+    const LSsession = localStorage.getItem('session')
+    const initialSession = LSsession ? JSON.parse(LSsession) : {token: '', isAuth: false};
+    const [session, saveSession] = useLocalStorage('session', initialSession);
 
+    const baseURL = process.env.REACT_APP_BASE_URL;
     const login = async (loginData) => {
         try {
-            const response = await axios.post("http://challenge-react.alkemy.org/", loginData)
+            const response = await axios.post(baseURL, loginData)
             .then( res => res.data.token );
             saveSession({
                 token: response,
-                isAuthenticated: true
-            })
+                isAuth: true
+            });
+            window.location.pathname="/"
         } catch(error) {
-            console.error( new Error(error) );
+            console.error(error);
         }
     }
 
-    return {session, login};
+    const logout = () => {
+        saveSession({token:'', isAuth: false});
+    }
+
+    return {session, login, logout};
 }
 
 export { useUserState };

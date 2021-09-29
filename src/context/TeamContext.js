@@ -1,7 +1,5 @@
 import React from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import Axios from 'axios';
-import axios from 'axios';
 
 const TeamContext = React.createContext();
 
@@ -16,16 +14,6 @@ const initialTeam = [
 
 const TeamProvider = ( {children} ) => {
     const [team, setTeam] = useLocalStorage('team', initialTeam)
-
-    const searchHero = async (valueSearched) => {
-        try {
-            const response = await axios.get(`https://www.superheroapi.com/api.php/1972691609555893/search/${valueSearched}`)
-                .then(res => res.json());
-            return response;
-        } catch(error) {
-            console.error(new Error(error))
-        }
-    }
 
     const validateHero = (heroName) => {
         const heroIndex = team.findIndex(hero => hero.name === heroName);
@@ -48,7 +36,6 @@ const TeamProvider = ( {children} ) => {
     return (
         <TeamContext.Provider value={{
             team,
-            searchHero,
             validateHero,
             addHero,
             deleteHero

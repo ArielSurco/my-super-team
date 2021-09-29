@@ -1,4 +1,5 @@
 .search-route {
+  min-height: 75vh;
   max-width: 90%;
 }
 
