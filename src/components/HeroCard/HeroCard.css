@@ -1,4 +1,4 @@
-.hero-card {
+/* .hero-card {
   max-width: 350px;
 }
 
@@ -9,4 +9,63 @@
 
 .hero-powerstat {
   text-transform: capitalize;
+} */
+
+.hero-container {
+  max-width: 350px;
+  height: 500px;
+}
+
+.hero-card {
+  width: 98%;
+  height: 95%;
+  padding: 0;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+
+.hero-card:hover > .flip-card {
+  transform: rotateY(180deg);
+}
+
+.flip-card__front, .flip-card__back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card__front {
+  transform: rotateY(0deg);
+}
+
+.flip-card__back {
+  transform: rotateY(180deg);
+}
+
+.front__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.hero-name {
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+  color: rgba(250, 250, 250, .9);
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 3rem;
+  background-color: rgba(20, 20, 20, .8);
 }
