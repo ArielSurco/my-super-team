@@ -12,18 +12,18 @@ import { TeamProvider } from '../../context/TeamContext';
 const App = () => {  
   return (
     <TeamProvider>
-      <Router>
-        <Layout>
-            <Switch>
-                <PrivateRoute exact path="/" component={Home}/>
-                <Route exact path="/login">
-                  <Login/>
-                </Route>
-                <PrivateRoute exact path="/search" component={Search}/>
-                <Route component={Error404} />
-            </Switch>  
-        </Layout>      
-      </Router>
+        <Router>
+          <Layout>
+              <Switch>
+                  <PrivateRoute exact path="/" component={Home}/>
+                  <Route exact path="/login">
+                    <Login/>
+                  </Route>
+                  <PrivateRoute exact path="/search" component={Search}/>
+                  <Route component={Error404} />
+              </Switch>  
+          </Layout>      
+        </Router>
     </TeamProvider>
   )
 }

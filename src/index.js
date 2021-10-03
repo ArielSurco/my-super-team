@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './routes/App/App';
-// import { SessionProvider } from './context/SessionContext'
+import './index.css';
 
 ReactDOM.render(
   <App />,

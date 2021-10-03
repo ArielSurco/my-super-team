@@ -8,7 +8,7 @@ const HeroSearch = ( {searchHero} ) => {
             searchValue: '',
         },
         onSubmit: value => {
-            searchHero(value)
+            searchHero(value.searchValue);
         }
     })
 

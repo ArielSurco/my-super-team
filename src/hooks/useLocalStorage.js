@@ -13,6 +13,7 @@ const useLocalStorage = (itemName, initialValue) => {
             parsedItem = JSON.parse(localStorageItem);
         }
         setItem(parsedItem);
+        //eslint-disable-next-line
     }, []);
   
     const saveItem = (newItem) => {
