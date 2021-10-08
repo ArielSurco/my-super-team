@@ -57,6 +57,7 @@ const Search = () => {
             <div className={`mt-5 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-${isXSViewport ? "center" : "start"}`}>
                 {isLoading ? <p>Is loading</p> : heroes.map(hero => (
                     <HeroCard
+                    isSearching
                     heroInfo={hero}
                     key={hero.id}
                     />

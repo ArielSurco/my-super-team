@@ -60,3 +60,10 @@
   line-height: 3rem;
   background-color: rgba(20, 20, 20, .8);
 }
+
+.button-group {
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+}
