@@ -1,10 +1,11 @@
 import React from 'react';
 import { TeamContext } from '../../context/TeamContext';
+import { StatsChart } from '../StatsChart/StatsChart';
 import './HeroCard.css';
 
 const HeroCard = props => {
     const { deleteHero } = React.useContext(TeamContext);
-    const { id, name, powerstats, image} = props.heroInfo;
+    const { id, name, powerstats, image } = props.heroInfo;
     const powerstatsNames = Object.keys(powerstats);
     const powerstatsValues = Object.values(powerstats);
 
@@ -17,7 +18,7 @@ const HeroCard = props => {
                         <h3 className="hero-name fw-normal">{name}</h3>
                     </div>
                     <div className="flip-card__back">
-                        Hollaaa
+                        <StatsChart labels={powerstatsNames} values={powerstatsValues}/>    
                     </div>
                 </div>
             </div>
