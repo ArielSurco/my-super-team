@@ -21,7 +21,7 @@ const HeroCard = props => {
                         <h2 className="text-center mt-3" >{name}</h2>
                         <StatsChart className="mx-auto mt-5" width='95%' height='50%' labels={powerstatsNames} values={powerstatsValues}/>    
                         <div className="button-group row d-flex justify-content-around">
-                            <button className="btn btn-primary col-4 fs-4">Details</button>
+                            <a className="btn btn-primary col-4 fs-4">Details</a>
                             {props.isSearching ? 
                             <button className="btn btn-success col-4 fs-4" onClick={() => addHero(props.heroInfo)}>Add</button>
                             : <button className="btn btn-danger col-4 fs-4" onClick={() => deleteHero(id)}>Remove</button>}
