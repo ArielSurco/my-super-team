@@ -5,6 +5,7 @@ import { Layout } from '../../components/Layout/Layout';
 import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
 import { Search } from '../Search/Search';
+import { HeroDetail } from '../HeroDetail/HeroDetail';
 import { Error404 } from '../Error404/Error404';
 import { PrivateRoute } from '../../components/PrivateRoute/PrivateRoute';
 import { TeamProvider } from '../../context/TeamContext';
@@ -15,11 +16,10 @@ const App = () => {
         <Router>
           <Layout>
               <Switch>
+                  <PrivateRoute path="/search/:id" component={HeroDetail}/>
+                  <PrivateRoute path="/search" component={Search}/>
+                  <Route path="/login" component={Login}/>
                   <PrivateRoute exact path="/" component={Home}/>
-                  <Route exact path="/login">
-                    <Login/>
-                  </Route>
-                  <PrivateRoute exact path="/search" component={Search}/>
                   <Route component={Error404} />
               </Switch>  
           </Layout>      

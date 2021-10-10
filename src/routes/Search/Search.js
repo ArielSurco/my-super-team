@@ -4,16 +4,6 @@ import { HeroCard } from '../../components/HeroCard/HeroCard';
 import { getData } from '../../helpers/getData';
 import './Search.css';
 
-// const searchHero = async (valueSearched) => {
-//     try {
-//         const response = await axios.get(`https://www.superheroapi.com/api.php/1972691609555893/search/${valueSearched}`)
-//             .then(res => res.data);
-//         return response
-//     } catch(error) {
-//         console.error(new Error(error))
-//     }
-// }
-
 const Search = () => {
     const isXSViewport = window.innerWidth < 576;
     const [heroes, setHeroes] = React.useState([]);
@@ -37,20 +27,6 @@ const Search = () => {
         }
         loadHeroes();
     }, [searchValue]);
-    // const [heroes, setHeroes] = React.useState({});
-    // const [isLoading, setIsLoading] = React.useState(true);
-    // React.useEffect(() => {
-    //     const loadHeroes = async () => {
-    //         try {
-    //             const response = await searchHero('bat');
-    //             setHeroes(response.results);
-    //             setIsLoading(false);
-    //         } catch(error) {
-    //             console.error(new Error(error));
-    //         }
-    //     }
-    //     loadHeroes();
-    // }, [])
     return (
         <div className="container search-route">
             <HeroSearch searchHero={handleSubmit}/>
