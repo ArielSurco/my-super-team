@@ -10,7 +10,7 @@ const initialTeam = [
 
 const TeamProvider = ( {children} ) => {
     const [team, setTeam] = useLocalStorage('team', initialTeam)
-    const errors = [];
+    const [errors, setErrors] = React.useState(['The team is full']);
     const canBeAdded = (teamWithNewHero) => {
         const goodAlignment = teamWithNewHero.filter((hero) => hero.biography.alignment === 'good');
         const badAlignment = teamWithNewHero.filter((hero) => hero.biography.alignment === 'bad');
@@ -23,6 +23,10 @@ const TeamProvider = ( {children} ) => {
             errors.push( new Error('Limit of heroes with bad orientation reached'))
         }
         return heroCanBeAdded;
+    }
+    const removeError = message => {
+        const newErrors = errors.filter(errMsg => message !== errMsg);
+        setErrors(newErrors);
     }
 
     const addHero = (hero) => {
@@ -46,7 +50,9 @@ const TeamProvider = ( {children} ) => {
             team,
             canBeAdded,
             addHero,
-            deleteHero
+            deleteHero,
+            errors,
+            removeError
         }}>
             {children}
         </TeamContext.Provider>
