@@ -10,32 +10,42 @@ const initialTeam = [
 
 const TeamProvider = ( {children} ) => {
     const [team, setTeam] = useLocalStorage('team', initialTeam)
-    const [errors, setErrors] = React.useState(['The team is full']);
+    const [alerts, setAlerts] = React.useState([]);
+    
     const canBeAdded = (teamWithNewHero) => {
         const goodAlignment = teamWithNewHero.filter((hero) => hero.biography.alignment === 'good');
         const badAlignment = teamWithNewHero.filter((hero) => hero.biography.alignment === 'bad');
         const heroCanBeAdded = teamWithNewHero.length <= 6 && goodAlignment.length <= 3 && badAlignment.length <= 3;
+        
         if(teamWithNewHero.length > 6) {
-            errors.push( new Error('The team is full'));
+            addAlert('The team is full', 'error');
         } else if(goodAlignment.length > 3){
-            errors.push( new Error('Limit of heroes with good orientation reached'))
+            addAlert('Limit of heroes with good orientation reached', 'error');
         } else if(badAlignment.length > 3) {
-            errors.push( new Error('Limit of heroes with bad orientation reached'))
+            addAlert('Limit of heroes with bad orientation reached', 'error');
         }
         return heroCanBeAdded;
     }
-    const removeError = message => {
-        const newErrors = errors.filter(errMsg => message !== errMsg);
-        setErrors(newErrors);
+
+    const addAlert = (message, type) => {
+        const newAlerts = [...alerts];
+        newAlerts.push({
+            message: message,
+            type: type
+        });
+        setAlerts(newAlerts);
+    }
+
+    const removeAlert = message => {
+        const newAlerts = alerts.filter(alert => alert.message !== message);
+        setAlerts(newAlerts);
     }
 
     const addHero = (hero) => {
         const newTeam = [...team];
         newTeam.push(hero);
-        if(canBeAdded(newTeam, hero))
+        if(canBeAdded(newTeam))
             setTeam(newTeam);
-        console.log(team)
-        console.log(errors)
     }
 
     const deleteHero = (heroID) => {
@@ -51,8 +61,9 @@ const TeamProvider = ( {children} ) => {
             canBeAdded,
             addHero,
             deleteHero,
-            errors,
-            removeError
+            alerts,
+            addAlert,
+            removeAlert
         }}>
             {children}
         </TeamContext.Provider>

@@ -12,10 +12,10 @@ const selectType = type => {
     }
 }
 
-const Alert = ({message, type, removeError}) => {
+const Alert = ({message, type, removeAlert}) => {
     useLayoutEffect(() => {
         setTimeout(() => {
-            removeError(message);
+            removeAlert(message);
         }, 5000)
     })
 
@@ -24,7 +24,7 @@ const Alert = ({message, type, removeError}) => {
             <p className="alert__text fs-3 fw-normal">
                 {message}
             </p>
-            <button className="alert__btn" onClick={() => removeError(message)}>
+            <button className="alert__btn" onClick={() => removeAlert(message)}>
                 <i className="btn__clear"></i>
             </button>
         </div>

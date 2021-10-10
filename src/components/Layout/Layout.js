@@ -6,15 +6,18 @@ import { TeamContext } from '../../context/TeamContext';
 import './Layout.css';
 
 const Layout = ( props ) => {
-    const { errors, removeError } = useContext(TeamContext);
-
+    const { alerts, addAlert, removeAlert } = useContext(TeamContext);
+    useLayoutEffect(() => {
+        addAlert("Algo esta mal", 'error')
+        console.log(alerts)
+    },[])
     return (
     <Fragment>
         <Navbar />
         {props.children}
         {/* <Footer /> */}
-        {errors.length !== 0 && errors.map((error) => (
-            <Alert key={error} message={error} type="error" removeError={removeError}/>
+        {alerts.length !== 0 && alerts.map((alert) => (
+            <Alert key={alert.message} message={alert.message} type={alert.type} removeAlert={removeAlert}/>
         ))}
     </Fragment>
     )
