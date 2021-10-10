@@ -28,6 +28,7 @@ const HeroDetail = () => {
                 const res = await getData(`${baseAPI + tokenAPI}/`, id)
                 setHero(res.data);
                 setIsLoading(false);
+                console.log(res.data)
             } catch(error) {
                 console.error(new Error(error))
             }
@@ -40,7 +41,7 @@ const HeroDetail = () => {
     return (
         <Fragment>
             {isLoading ? <p>Estoy cargando</p> : 
-            (   -+<div className="card hero-card shadow mt-5 w-75 m-auto">
+            (   <div className="card hero-card shadow mt-5 w-75 m-auto">
                 <div className="row g-0">
                     <div className="col-md-4">
                         <img src={image.url} alt={name} className="hero-image img-fluid rounded-start" />
