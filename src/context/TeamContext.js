@@ -44,8 +44,10 @@ const TeamProvider = ( {children} ) => {
     const addHero = (hero) => {
         const newTeam = [...team];
         newTeam.push(hero);
-        if(canBeAdded(newTeam))
-            setTeam(newTeam);
+        if(canBeAdded(newTeam)){
+            setTeam(newTeam)
+            addAlert('Hero added successfully', 'success')
+        }
     }
 
     const deleteHero = (heroID) => {

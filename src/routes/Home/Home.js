@@ -6,7 +6,12 @@ import './Home.css';
 
 const Home = () => {
     const isXSViewport = window.innerWidth < 576;
-    const { team } = React.useContext(TeamContext); 
+    const { team, alerts, removeAlert } = React.useContext(TeamContext);
+    React.useEffect(() => {
+        alerts.forEach(alert => {
+            removeAlert(alert.message);
+        })
+    })
     return (
         <div className="container-fluid home">
             <TeamInfo />

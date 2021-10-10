@@ -16,7 +16,7 @@ const Alert = ({message, type, removeAlert}) => {
     useLayoutEffect(() => {
         setTimeout(() => {
             removeAlert(message);
-        }, 5000)
+        }, 1000)
     })
 
     return (

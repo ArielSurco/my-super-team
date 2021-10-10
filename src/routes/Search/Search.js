@@ -2,7 +2,6 @@ import React from 'react';
 import { HeroSearch } from '../../components/HeroSearch/HeroSearch';
 import { HeroCard } from '../../components/HeroCard/HeroCard';
 import { getData } from '../../helpers/getData';
-import { Alert } from '../../components/Alert/Alert';
 import { TeamContext } from '../../context/TeamContext';
 import './Search.css';
 
@@ -11,7 +10,7 @@ const Search = () => {
     const [heroes, setHeroes] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [searchValue, setSearchValue] = React.useState(null);
-    const { errors, removeError } = React.useContext(TeamContext);
+    const { errors } = React.useContext(TeamContext);
     console.log(errors);
 
     const handleSubmit = value => {
@@ -43,7 +42,6 @@ const Search = () => {
                     />
                 ))}
             </div>
-            {/* {errors.length !== 0 && <Alert message={errors[0]} type="error" removeError={removeError}/>} */}
         </div>
     )
 }

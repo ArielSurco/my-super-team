@@ -1,4 +1,4 @@
-import { useContext, Fragment, useLayoutEffect } from 'react';
+import { useContext, Fragment } from 'react';
 import { Navbar } from '../Navbar/Navbar';
 import { Footer } from '../Footer/Footer';
 import { Alert } from '../Alert/Alert';
@@ -6,11 +6,8 @@ import { TeamContext } from '../../context/TeamContext';
 import './Layout.css';
 
 const Layout = ( props ) => {
-    const { alerts, addAlert, removeAlert } = useContext(TeamContext);
-    useLayoutEffect(() => {
-        addAlert("Algo esta mal", 'error')
-        console.log(alerts)
-    },[])
+    const { alerts, removeAlert } = useContext(TeamContext);
+    console.log(alerts);
     return (
     <Fragment>
         <Navbar />
