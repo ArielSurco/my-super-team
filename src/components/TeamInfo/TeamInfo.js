@@ -8,7 +8,7 @@ const TeamInfo = () => {
 
     const { team } = React.useContext(TeamContext);
     const powerstatsList = getPropertiesOf(team, "powerstats")
-    const powerstatsKeys = Object.keys(powerstatsList[0]);
+    const powerstatsKeys = team.length!==0 ? Object.keys(powerstatsList[0]) : [];
     const totalPowerstats = powerstatsKeys.map(powerstatKey => {
         const tPowerstat = powerstatsList.map(powerstat => parseInt(powerstat[powerstatKey]))
         return tPowerstat.reduce((a, b) => a + b);
@@ -40,7 +40,7 @@ const TeamInfo = () => {
                             <li className="list-group-item">
                                 <p className="fs-3 fw-bold">Team Category:
                                     <span className="fw-normal text-capitalize">
-                                         {" " + powerstatsKeys[maxIndex]}
+                                         {` ${team.length!== 0 ? powerstatsKeys[maxIndex] : ''}`}
                                     </span>
                                 </p>
                             </li>
@@ -58,10 +58,10 @@ const TeamInfo = () => {
                                 <header className="fs-3 fw-bold">Averages</header>
                                 <div className="container d-flex justify-content-around row row-cols-1 row-cols-sm-2 row-cols-lg-3">
                                     <div className="info-value-item pt-3 px-4">
-                                        <p className="fs-4"><span className="fw-bold">Weight: </span>{average(weightList).toFixed()}kg</p>
+                                        <p className="fs-4"><span className="fw-bold">Weight: </span>{team.length!==0 ? average(weightList).toFixed() : 0}kg</p>
                                     </div>
                                     <div className="info-value-item pt-3 px-4">
-                                        <p className="fs-4"><span className="fw-bold">Height: </span>{average(heightList).toFixed()}cm</p>
+                                        <p className="fs-4"><span className="fw-bold">Height: </span>{team.length!==0 ? average(heightList).toFixed() : 0}cm</p>
                                     </div>
                                 </div>
                             </li>

@@ -15,11 +15,12 @@ const Home = () => {
     return (
         <div className="container-fluid home">
             <TeamInfo />
-            <div className={`row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-${isXSViewport ? "center" : "start"}`}>
-                {team.map( hero => (
+            {team.length !== 0 ? (<div className={`row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-${isXSViewport ? "center" : "start"}`}>
+                {team.length !== 0 && team.map( hero => (
                     <HeroCard heroInfo={hero} key={hero.name} />
                 ))}
-            </div>
+            </div>)
+            : <p className="fs-3">Your team is empty, search a hero to add</p> }
         </div>
     )
 }
