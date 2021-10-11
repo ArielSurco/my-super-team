@@ -13,7 +13,7 @@ import { TeamProvider } from '../../context/TeamContext';
 const App = () => {  
   return (
     <TeamProvider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Layout>
               <Switch>
                   <PrivateRoute path="/search/:id" component={HeroDetail}/>

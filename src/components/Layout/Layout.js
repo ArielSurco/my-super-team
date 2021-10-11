@@ -6,7 +6,6 @@ import './Layout.css';
 
 const Layout = ( props ) => {
     const { alerts, removeAlert } = useContext(TeamContext);
-    console.log(alerts);
     return (
     <Fragment>
         <Navbar />
