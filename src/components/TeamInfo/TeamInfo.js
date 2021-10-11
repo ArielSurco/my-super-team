@@ -16,6 +16,7 @@ const getMeasure = (arr) => {
 }
 
 const TeamInfo = () => {
+    //Sé que hay mucha lógica que no tiene por qué estar acá. Tenía pensado moverlo a un archivo dentro de la carpeta 'helpers' y luego importar las funciones que necesito
     const { team } = React.useContext(TeamContext);
     const powerstatsList = getPropertiesOf(team, "powerstats")
     const powerstatsKeys = team.length!==0 ? Object.keys(powerstatsList[0]) : [];

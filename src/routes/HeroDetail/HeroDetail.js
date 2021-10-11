@@ -35,12 +35,13 @@ const HeroDetail = () => {
         }
         loadHero();
     }, [id]);
+    //Quería juntar los datos en arrays y luego pasarlo por composición como parámetro a un componente "HorizontalCard"
     // const dataToShow = [biography.fullname, biography.aliases, work.base, appearance.weight, appearance.height];
     // const labels = ['Fullname', 'Aliases', 'Workplace', 'Weight', 'Height', 'Hair color', 'Eye color']
 
     return (
         <Fragment>
-            {isLoading ? <p>Estoy cargando</p> : 
+            {isLoading ? <p>Loading...</p> : 
             (   <div className="card hero-card shadow mt-5 w-75 m-auto">
                 <div className="row g-0">
                     <div className="col-md-4">
