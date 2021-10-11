@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { HeroSearch } from '../../components/HeroSearch/HeroSearch';
 import { HeroCard } from '../../components/HeroCard/HeroCard';
 import { getData } from '../../helpers/getData';
-import { TeamContext } from '../../context/TeamContext';
 import './Search.css';
 
 const Search = () => {
@@ -10,8 +10,6 @@ const Search = () => {
     const [heroes, setHeroes] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [searchValue, setSearchValue] = React.useState(null);
-    const { errors } = React.useContext(TeamContext);
-    console.log(errors);
 
     const handleSubmit = value => {
         setSearchValue(value)
@@ -19,9 +17,10 @@ const Search = () => {
     React.useEffect(() => {
         const loadHeroes = async () => {
             try {
-                const res = await getData('https://www.superheroapi.com/api.php/1972691609555893/search/', searchValue);
-                if(!res.data.error) {
-                    setHeroes(res.data.results)
+                const res = await getData('https://www.superheroapi.com/api.php/1972691609555893/search/', searchValue)
+                .then(response => response.data);
+                if(!res.error) {
+                    setHeroes(res.results);
                     setIsLoading(false);
                 }
             } catch(error) {
@@ -30,17 +29,19 @@ const Search = () => {
         }
         loadHeroes();
     }, [searchValue]);
+
     return (
         <div className="container search-route">
             <HeroSearch searchHero={handleSubmit}/>
-            <div className={`mt-5 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-${isXSViewport ? "center" : "start"}`}>
-                {isLoading ? <p>Is loading</p> : heroes.map(hero => (
+            <Link to="/" className="btn btn-primary fs-2 mt-3">Check your team</Link>
+            <div className={`mt-3 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-${isXSViewport ? "center" : "start"}`}>
+                {!isLoading && (heroes.map(hero => (
                     <HeroCard
                     isSearching
                     heroInfo={hero}
                     key={hero.id}
                     />
-                ))}
+                )))}
             </div>
         </div>
     )

@@ -1,6 +1,5 @@
 import { useContext, Fragment } from 'react';
 import { Navbar } from '../Navbar/Navbar';
-import { Footer } from '../Footer/Footer';
 import { Alert } from '../Alert/Alert';
 import { TeamContext } from '../../context/TeamContext';
 import './Layout.css';
@@ -12,7 +11,6 @@ const Layout = ( props ) => {
     <Fragment>
         <Navbar />
         {props.children}
-        {/* <Footer /> */}
         {alerts.length !== 0 && alerts.map((alert) => (
             <Alert key={alert.message} message={alert.message} type={alert.type} removeAlert={removeAlert}/>
         ))}

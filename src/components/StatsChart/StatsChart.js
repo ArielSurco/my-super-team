@@ -17,7 +17,7 @@ const StatsChart = ({labels, values, width, height, className}) => {
   return (
       <ResponsiveContainer width={width} height={height} className={className}>
         <RadarChart cx="50%" cy="50%" outerRadius="85%" data={data}>
-          <PolarGrid />
+          <PolarGrid/>
           <PolarAngleAxis dataKey="label" fontWeight='bold'/>
           <PolarRadiusAxis/>
           <Radar dataKey="value" stroke="#8884e8" fill="#8884d8" fillOpacity={0.6} dot={true} />

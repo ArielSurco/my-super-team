@@ -2,10 +2,20 @@ import React from 'react';
 import { TeamContext } from '../../context/TeamContext';
 import './TeamInfo.css';
 
-const TeamInfo = () => {
-    const getPropertiesOf = (objectList, property, cb = x => x) => objectList.map(object => cb(object[property]));
-    const average = (list) => list.reduce((a,b) => a + b) / list.length;
+const getPropertiesOf = (objectList, property, cb = x => x) => objectList.map(object => cb(object[property]));
 
+const average = (list) => list.reduce((a,b) => a + b) / list.length;
+
+const getMeasure = (arr) => {
+    const weight = arr.filter(value => value.includes("kg"));
+    const height = arr.filter(value => value.includes("cm"));
+    if(weight.length>0)
+        return parseInt(weight);
+    else if(height.length>0)
+        return parseInt(height);
+}
+
+const TeamInfo = () => {
     const { team } = React.useContext(TeamContext);
     const powerstatsList = getPropertiesOf(team, "powerstats")
     const powerstatsKeys = team.length!==0 ? Object.keys(powerstatsList[0]) : [];
@@ -15,19 +25,11 @@ const TeamInfo = () => {
     });
     const maxIndex = totalPowerstats.findIndex(value => value === Math.max(...totalPowerstats));
 
-    const getMeasure = (arr) => {
-        const weight = arr.filter(value => value.includes("kg"));
-        const height = arr.filter(value => value.includes("cm"));
-        if(weight.length>0)
-            return parseInt(weight);
-        else if(height.length>0)
-            return parseInt(height);
-    }
     const weightList = getPropertiesOf(getPropertiesOf(team, "appearance"), "weight", getMeasure);
     const heightList = getPropertiesOf(getPropertiesOf(team, "appearance"), "height", getMeasure);
 
     return (
-        <div className="team-info-container col-12 col-xl-10 col-xxl-9 accordion shadow mb-5 justify-self-center" id="teamInfoAccordion">
+        <div className="team-info-container col-12 col-xl-10 col-xxl-9 accordion shadow justify-self-center" id="teamInfoAccordion">
             <div className="accordion-item ">
                 <header className="accordion-header" id="headerTeamInfo">
                     <button className="accordion-button collapsed fs-3 fw-bold fst-italic" data-bs-toggle="collapse" data-bs-target="#teamInfo" aria-expanded="false" aria-controls="teamInfo">
